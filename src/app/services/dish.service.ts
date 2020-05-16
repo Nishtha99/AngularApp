@@ -13,7 +13,7 @@ export class DishService {
 
   constructor(private http: HttpClient,
             private processHTTPMsgService: ProcessHTTPMsgService ) {}
-
+ 
   getDishes(): Observable<Dish[]> {
     // Simulate server latency with 2 second delay
     return this.http.get<Dish[]>(baseURL + 'dishes')
@@ -27,7 +27,7 @@ export class DishService {
   }
 
   getFeaturedDish(): Observable<Dish> {
-    return this.http.get<Dish>(baseURL + 'dishes?featured=true')
+    return this.http.get<Dish>(baseURL + 'dishes?featured = true')
     .pipe(map(dishes => dishes[0]))
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
